@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Sweet Spot Desserts</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Georgia, serif;
+height:100vh;
+overflow:hidden;
+background:#2b140c;
+color:white;
+}
+
+.container{
+height:100vh;
+display:flex;
+flex-direction:column;
+}
+
+/* HERO */
+
+.hero{
+flex:2;
+background:
+linear-gradient(rgba(40,15,5,0.65),rgba(30,10,3,0.85)),
+url("https://images.unsplash.com/photo-1551024506-0bccd828d307");
+background-size:cover;
+background-position:center;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:20px;
+}
+
+/* NAVBAR */
+
+.navbar{
+position:absolute;
+top:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+padding:15px 60px;
+box-sizing:border-box;
+}
+
+.logo{
+font-size:28px;
+font-weight:bold;
+color:#f8e6c8;
+}
+
+.menu a{
+margin:0 12px;
+text-decoration:none;
+color:#f8e6c8;
+font-size:17px;
+}
+
+/* HERO TEXT */
+
+.hero h1{
+font-size:58px;
+margin:10px 0;
+color:#f8e6c8;
+text-shadow:0 5px 25px rgba(0,0,0,0.7);
+}
+
+.hero p{
+font-size:20px;
+color:#f3d9b1;
+}
+
+/* CENTER IMAGE */
+
+.hero-img{
+margin-top:20px;
+}
+
+.hero-img img{
+width:320px;
+border-radius:18px;
+box-shadow:0 15px 40px rgba(0,0,0,0.6);
+}
+
+/* CARDS SECTION */
+
+.cards{
+flex:1;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+padding:15px;
+}
+
+/* CARD STYLE */
+
+.card{
+margin:10px;
+border-radius:18px;
+padding:30px;
+text-align:center;
+color:white;
+
+/* pattern background */
+background:
+linear-gradient(rgba(60,25,10,0.9),rgba(40,15,5,0.9)),
+url("pattern.png");
+
+background-size:cover;
+background-position:center;
+
+box-shadow:0 10px 30px rgba(0,0,0,0.6);
+}
+
+.icon{
+font-size:38px;
+margin-bottom:10px;
+}
+
+.card h3{
+font-size:28px;
+margin-bottom:10px;
+}
+
+.card p{
+font-size:17px;
+line-height:1.5;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="hero">
+
+<div class="navbar">
+
+<div class="logo">Sweet Spot</div>
+
+<div class="menu">
+  <a href="home.html">Home</a>
+  <a href="menu.html">Menu</a> <!-- This now opens menu.html -->
+  <a href="#">IPL</a>
+  <a href="#">Contact</a>
+</div></div>
+
+<h1>Decadent Desserts Await!</h1>
+
+<p>Indulge in our rich brownies, cakes and sweet creations.</p>
+
+<div class="hero-img">
+<img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c">
+</div>
+
+</div>
+
+<div class="cards">
+
+<div class="card">
+<div class="icon">🧁</div>
+<h3>Dessert Magic</h3>
+<p>Fresh brownies, cakes and donuts made with love.</p>
+</div>
+
+<div class="card">
+<div class="icon">🏏</div>
+<h3>IPL + Desserts</h3>
+<p>Enjoy cricket matches with delicious sweet treats.</p>
+</div>
+
+<div class="card">
+<div class="icon">📍</div>
+<h3>Visit Us</h3>
+<p>Located in Nagarbhavi — your sweet dessert destination.</p>
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Dessert Shop</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+overflow:hidden;
+
+/* sky blue background */
+
+background:#87CEEB;
+
+/* doodle pattern */
+
+background-image:url("data:image/svg+xml,\
+<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'>\
+<g stroke='white' stroke-width='2' fill='none' opacity='0.6'>\
+<circle cx='40' cy='40' r='18'/>\
+<circle cx='40' cy='40' r='5'/>\
+<rect x='120' y='30' width='30' height='20' rx='4'/>\
+<path d='M120 50 Q135 70 150 50'/>\
+<line x1='20' y1='150' x2='60' y2='150'/>\
+<line x1='30' y1='140' x2='50' y2='160'/>\
+<circle cx='150' cy='150' r='12'/>\
+</g>\
+</svg>");
+
+background-size:200px 200px;
+}
+
+/* slide animation */
+
+@keyframes slideDown{
+0%{
+transform:translateY(-120%);
+opacity:0;
+}
+100%{
+transform:translateY(0);
+opacity:1;
+}
+}
+
+/* poster */
+
+.container{
+width:900px;
+height:450px;
+background:white;
+border-radius:25px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:40px;
+box-shadow:0 20px 50px rgba(0,0,0,0.25);
+
+animation:slideDown 1.4s ease;
+}
+
+/* text */
+
+.text h1{
+font-size:55px;
+margin:0;
+color:#1e4fa3;
+}
+
+.text span{
+color:#2f7df6;
+}
+
+.text p{
+margin-top:10px;
+font-size:20px;
+color:#555;
+}
+
+/* button */
+
+.btn{
+margin-top:30px;
+padding:15px 35px;
+background:#2f7df6;
+border-radius:30px;
+color:white;
+display:inline-block;
+}
+
+/* dessert illustration */
+
+.image img{
+width:320px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="text">
+<h1>Welcome to <br><span>Dessert Shop</span></h1>
+<p>Cakes • Donuts • Sweet Treats</p>
+
+<a href="home.html" class="btn">GET IN</a>
+</div>
+<!-- dessert images -->
+
+<div class="image">
+  <img class="cake" src="https://images.unsplash.com/photo-1578985545062-69928b1d9587">
+  <img class="donut" src="https://images.unsplash.com/photo-1551024601-bec78aea704b">
+</div>
+
+<style>
+
+.image{
+display:flex;
+gap:20px;
+align-items:center;
+}
+
+/* black forest cake */
+
+.cake{
+width:180px;
+border-radius:15px;
+box-shadow:0 10px 25px rgba(0,0,0,0.25);
+}
+
+/* chocolate donut */
+
+.donut{
+width:160px;
+border-radius:50%;
+box-shadow:0 10px 25px rgba(0,0,0,0.25);
+}
+
+</style>
+</body>
+</html>

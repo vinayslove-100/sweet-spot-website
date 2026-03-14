@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Sweet Spot Owner Panel</title>
+<style>
+body {
+  font-family: Arial;
+  background: #2b140c;
+  color: white;
+  text-align: center;
+  padding: 40px;
+}
+h1 {
+  color: #f8e6c8;
+}
+input, button {
+  padding: 12px;
+  margin: 10px;
+  border-radius: 6px;
+  border: none;
+}
+button {
+  background: #f8e6c8;
+  cursor: pointer;
+  font-weight: bold;
+}
+#message {
+  color: #ffd27f;
+  font-weight: bold;
+  display: none;
+  margin-top: 10px;
+  font-size: 16px;
+}
+</style>
+</head>
+<body>
+
+<h1>Add Dessert</h1>
+
+<input id="name" placeholder="Dessert Name"><br>
+<input id="price" placeholder="Price"><br>
+<input type="file" id="file"><br>
+<button onclick="addDessert()">Add Dessert</button>
+
+<p id="message"></p>
+
+<script type="module">
+import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm"
+
+// ✅ Your Supabase Project URL and Key
+const supabase = createClient(
+  "https://bpewdkvtcglogscbgdwj.supabase.co",
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJwZXdka3Z0Y2dsb2dzY2JnZHdqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM0MTY4MjIsImV4cCI6MjA4ODk5MjgyMn0.zwwS6fHyBVnz3vClyQArykSNJIZo8Z5awhs9ODaRsoE"
+)
+
+async function addDessert() {
+  const name = document.getElementById("name").value
+  const price = document.getElementById("price").value
+  const file = document.getElementById("file").files[0]
+  const message = document.getElementById("message")
+
+  if (!file) {
+    message.textContent = "Please select a file!"
+    message.style.display = "block"
+    return
+  }
+
+  // Upload file to Supabase Storage
+  const { data: uploadData, error: uploadError } = await supabase
+    .storage
+    .from('dessert-images')
+    .upload(file.name, file, { upsert: true })
+
+  if (uploadError) {
+    message.textContent = "Upload failed!"
+    message.style.display = "block"
+    return
+  }
+
+  // Get public URL
+  const { publicUrl } = supabase
+    .storage
+    .from('dessert-images')
+    .getPublicUrl(file.name)
+
+  // Insert dessert into desserts table
+  const { error: insertError } = await supabase
+    .from('desserts')
+    .insert([{ name, price, image: publicUrl }])
+
+  if (insertError) {
+    message.textContent = "Failed to add dessert!"
+    message.style.display = "block"
+    return
+  }
+
+  // Show success message for 3 seconds
+  message.textContent = "Dessert added successfully!"
+  message.style.display = "block"
+  setTimeout(() => { message.style.display = "none" }, 3000)
+
+  // Clear inputs
+  document.getElementById("name").value = ""
+  document.getElementById("price").value = ""
+  document.getElementById("file").value = ""
+}
+</script>
+
+</body>
+</html>
